@@ -9,6 +9,8 @@ import { fetchTeams } from 'store/teams/actions'
 import TeamCard from 'components/Common/TeamCard'
 import IconOval from 'components/Common/Icons/Common/Oval'
 import { ITeamsState, ITeamListState } from 'store/teams/types'
+import {ITaskState} from '../../../../store/tasks/types';
+import Task from '../../../Common/Task';
 
 const Wrapper = styled.div`
   border: 1px solid #e2e2ea;
@@ -51,40 +53,44 @@ const TeamCards = (props: IContentTeamsProps): any => {
   return props.teams.map((card: ITeamListState) => (
     <TeamCard key={card.id} {...card} />
   ))
-}
+};
 
-const Teams: React.FC<IContentTeamsProps> = props => {
-  const { teams, fetchTeams } = props
+class Teams extends React.Component<IContentTeamsProps> {
+  public render = () => {
+    const { teams, fetchTeams } = this.props;
 
-  React.useEffect(() => {
-    !teams.length && fetchTeams()
-  }, [])
+    const teamsList = teams.map((item: ITeamListState) => (
+        <TeamCard key={item.id} {...item} />;
 
-  return (
-    <Wrapper>
-      <Header>
-        <TeamsTitle>Teams</TeamsTitle>
-        <TeamsMore>
-          <IconOval />
-        </TeamsMore>
-      </Header>
-      <TeamsList>
-        {teams.length ? <TeamCards {...props} /> : <Loader height={'none'} />}
-        <Big name='Add team' />
-      </TeamsList>
-    </Wrapper>
-  )
+
+    fetchTeams();
+
+    return (
+        <Wrapper>
+          <Header>
+            <TeamsTitle>Teams</TeamsTitle>
+            <TeamsMore>
+              <IconOval />
+            </TeamsMore>
+          </Header>
+          <TeamsList>
+            {teams.length ? <TeamCards {...this.props} /> : <Loader height={'none'} />}
+            <Big name='Add team' />
+          </TeamsList>
+        </Wrapper>
+    )
+  };
 }
 
 const mapStateToProps = (state: AppState) => {
   return {
     teams: getTeams(state)
   }
-}
+};
 
 const mapDispatchToProps = {
   fetchTeams
-}
+};
 
 export default connect(
   mapStateToProps,

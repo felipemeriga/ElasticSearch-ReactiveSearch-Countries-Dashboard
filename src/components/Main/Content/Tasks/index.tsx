@@ -49,30 +49,34 @@ interface IContentTasksProps {
   fetchTasks: typeof fetchTasks;
 }
 
-const Tasks: React.FC<IContentTasksProps> = props => {
-  const { tasks, fetchTasks } = props;
+class Tasks extends React.Component<IContentTasksProps> {
 
-    React.useEffect(() => {
-        !tasks.length && fetchTasks()
-    }, []);
+    componentWillMount(): void {
+        const { fetchTasks } = this.props;
+        fetchTasks();
+    }
 
-    const tasksList = tasks.map((item: ITaskState) => (
-    <Task data={item} key={item.id} />
-  ));
+    public render = () => {
+        const { tasks } = this.props;
 
-  return (
-    <Wrapper>
-      <Header>
-        <TeamsTitle>Tasks</TeamsTitle>
-        <TeamsMore>
-          <IconOval />
-        </TeamsMore>
-      </Header>
-      <Teams>
-        <TasksWrapper>{tasksList}</TasksWrapper>
-      </Teams>
-    </Wrapper>
-  )
+        const tasksList = tasks.map((item: ITaskState) => (
+            <Task data={item} key={item.id}/>
+        ));
+
+        return (
+            <Wrapper>
+                <Header>
+                    <TeamsTitle>Tasks</TeamsTitle>
+                    <TeamsMore>
+                        <IconOval />
+                    </TeamsMore>
+                </Header>
+                <Teams>
+                    <TasksWrapper>{tasksList}</TasksWrapper>
+                </Teams>
+            </Wrapper>
+        )
+    };
 };
 
 const mapStateToProps = (state: AppState) => {
