@@ -1,7 +1,7 @@
 import { AUTH, IAuthState, IAuthCheckAction } from 'store/auth/types'
 
 const initialState: IAuthState = {
-  isAuth: false,
+  isAuth: true,
   login: '',
   password: ''
 }

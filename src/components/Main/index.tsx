@@ -9,7 +9,6 @@ const Content = React.lazy(() => import('components/Main/Content'))
 
 const Wrapper = styled.div`
   display: flex;
-  max-width: 1600px;
   margin: 0 auto;
 `
 
@@ -18,7 +17,7 @@ const Main = () => {
     <>
       <Header />
       <Wrapper>
-        <Sidebar />
+
         <ErrorBoundary>
           <React.Suspense fallback={<Loader />}>
             <Content />

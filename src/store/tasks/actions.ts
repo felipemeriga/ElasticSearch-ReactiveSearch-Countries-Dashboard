@@ -10,12 +10,12 @@ import {
 
 export const fetchTasks = () => async (dispatch: Dispatch): Promise<void> => {
   try {
-    const { data } = await instance.get('tasks.json')
+    const { data } = await instance.get('https://square-dashboard-6ffae.firebaseio.com/tasks.json');
     dispatch({ type: FETCH_TASKS, payload: data })
   } catch (err) {
     console.error(`[Action: fetchTasks] - ${err}`)
   }
-}
+};
 
 export const dragAndDrop = (
   e: object,
@@ -25,11 +25,11 @@ export const dragAndDrop = (
     type: DRAG_AND_DROP,
     payload: { e, type }
   }
-}
+};
 
 export const deleteTask = (id: string): ITasksDeleteTasksAction => {
   return {
     type: DELETE_TASK,
     payload: id
   }
-}
+};
