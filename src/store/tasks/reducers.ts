@@ -17,7 +17,7 @@ type Actions =
   | ITasksFetchTasksAction
   | ITasksDeleteTasksAction
 
-const initialState: ITaskState[] = []
+const initialState: ITaskState[] = [];
 
 export function tasks(state = initialState, action: Actions): ITaskState[] {
   const { type, payload } = action

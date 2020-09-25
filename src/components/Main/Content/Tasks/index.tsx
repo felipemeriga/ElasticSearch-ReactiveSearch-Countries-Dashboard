@@ -44,12 +44,18 @@ const TasksWrapper = styled.div`
   flex-wrap: wrap;
 `;
 
-interface IContentTasksProps {
+interface IStateProps {
   tasks: ITaskState[];
   fetchTasks: typeof fetchTasks;
 }
 
-class Tasks extends React.Component<IContentTasksProps> {
+interface IDispatchProps {
+    fetchTasks: () => any;
+}
+
+type Props = IStateProps & IDispatchProps;
+
+class Tasks extends React.Component<Props> {
 
     componentWillMount(): void {
         const { fetchTasks } = this.props;
@@ -77,16 +83,18 @@ class Tasks extends React.Component<IContentTasksProps> {
             </Wrapper>
         )
     };
-};
+}
 
-const mapStateToProps = (state: AppState) => {
+const mapStateToProps = (state: AppState): {tasks: ITaskState[]} => {
   return {
     tasks: getTasks(state)
   }
 };
 
-const mapDispatchToProps = {
-    fetchTasks
+const mapDispatchToProps = (dispatch: any): IDispatchProps => {
+    return {
+        fetchTasks: () => dispatch(fetchTasks())
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tasks)
