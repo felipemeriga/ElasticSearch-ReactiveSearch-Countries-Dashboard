@@ -3,8 +3,6 @@ import { Dispatch } from 'redux'
 import {
   FETCH_TASKS,
   DELETE_TASK,
-  DRAG_AND_DROP,
-  ITasksDragAndDropAction,
   ITasksDeleteTasksAction
 } from 'store/tasks/types'
 
@@ -14,16 +12,6 @@ export const fetchTasks = () => async (dispatch: Dispatch): Promise<void> => {
     dispatch({ type: FETCH_TASKS, payload: data })
   } catch (err) {
     console.error(`[Action: fetchTasks] - ${err}`)
-  }
-};
-
-export const dragAndDrop = (
-  e: object,
-  type: string
-): ITasksDragAndDropAction => {
-  return {
-    type: DRAG_AND_DROP,
-    payload: { e, type }
   }
 };
 

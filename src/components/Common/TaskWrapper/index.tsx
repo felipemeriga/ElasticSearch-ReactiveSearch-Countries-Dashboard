@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 import Task from 'components/Common/Task'
 import { ITaskState } from 'store/tasks/types'
-import { dragAndDrop } from 'store/tasks/actions'
 import { getKanbanOption } from 'store/show/selectors'
 import Button from 'components/Common/TaskWrapper/Button'
 import IconOval from 'components/Common/Icons/Common/Oval'
@@ -41,29 +40,14 @@ const More = styled.div`
     display: none;
   }
 `;
-const TasksWrapper = styled<DragWrapperProps>('div')`
+const TasksWrapper = styled('div')`
   height: auto;
   border-left: 1px solid ${variables.colorBorder};
   border-right: 1px solid ${variables.colorBorder};
   padding: 20px 0;
-  background: ${(props: DragWrapperProps) =>
-    props.dragOver
-      ? `repeating-linear-gradient(
-    45deg,
-    white,
-    white 5px,
-    #E3ECFB 5px,
-    #E3ECFB 10px
-  )`
-      : 'none'};
 `;
 
-type DragWrapperProps = {
-  dragOver: () => void
-}
-
 interface ITaskWrapperProps {
-  dragAndDrop: typeof dragAndDrop
   data: ITaskState[]
   type: string
   option: boolean
@@ -76,33 +60,10 @@ const Tasks = (props: ITaskWrapperProps): any => {
 };
 
 const TaskWrapper: React.FC<ITaskWrapperProps> = props => {
-  const { type, dragAndDrop } = props;
-
-  const [dragOver, setDragOver] = React.useState<boolean>(false)
-
-  const onDragOver = (e: React.DragEvent<HTMLDivElement>): void => {
-    e.preventDefault()
-  };
-
-  const onDragEnter = (): void => {
-    setDragOver(prevState => !prevState)
-  };
-
-  const onDragLeave = (): void => {
-    setDragOver(prevState => !prevState)
-  };
-
-  const onDrop = (e: React.DragEvent<HTMLDivElement>): void => {
-    dragAndDrop(e, type)
-    setDragOver(false)
-  };
+  const { type } = props;
 
   return (
     <Wrapper
-      onDrop={onDrop}
-      onDragOver={onDragOver}
-      onDragEnter={onDragEnter}
-      onDragLeave={onDragLeave}
       {...props}
     >
       <Header>
@@ -111,7 +72,7 @@ const TaskWrapper: React.FC<ITaskWrapperProps> = props => {
           <IconOval />
         </More>
       </Header>
-      <TasksWrapper dragOver={dragOver}>
+      <TasksWrapper >
         <Tasks {...props} />
       </TasksWrapper>
       <Button />
@@ -125,11 +86,7 @@ const mapStateToProps = (state: AppState) => {
   }
 };
 
-const mapDispatchToProps = {
-  dragAndDrop
-};
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(TaskWrapper)
