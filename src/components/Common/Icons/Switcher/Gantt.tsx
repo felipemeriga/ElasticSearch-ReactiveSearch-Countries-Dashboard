@@ -15,6 +15,6 @@ const Gantt = () => {
       />
     </svg>
   )
-}
+};
 
 export default Gantt

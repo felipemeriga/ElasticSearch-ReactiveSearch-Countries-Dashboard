@@ -9,19 +9,18 @@ const Wrapper = styled.section`
   align-items: center;
   justify-content: space-between;
   height: 70px;
-  max-width: 1600px;
   margin: 0 auto;
   box-shadow: inset 0px -1px 0px #e2e2ea;
-`
+`;
 const LogoWrapper = styled.div`
   margin-left: 25px;
   a {
     text-decoration: none;
   }
-`
+`;
 const ActionsWrapper = styled.div`
   margin-right: 25px;
-`
+`;
 
 const logoProps = {
   title: {
@@ -33,7 +32,7 @@ const logoProps = {
     size: 34,
     color: '#0062ff'
   }
-}
+};
 
 const Header = () => {
   return (
@@ -48,6 +47,6 @@ const Header = () => {
       </ActionsWrapper>
     </Wrapper>
   )
-}
+};
 
 export default Header

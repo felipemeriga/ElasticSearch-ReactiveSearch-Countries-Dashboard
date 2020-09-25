@@ -15,6 +15,6 @@ const Shape = () => {
       />
     </svg>
   )
-}
+};
 
 export default Shape

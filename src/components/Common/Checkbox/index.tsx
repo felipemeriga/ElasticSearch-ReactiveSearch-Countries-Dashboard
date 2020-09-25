@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const variables = {
   greenColor: '#3dd598'
-}
+};
 
 const CheckboxCustom = styled.span`
   position: absolute;
@@ -26,7 +26,7 @@ const CheckboxCustom = styled.span`
     border-width: 0 3px 3px 0;
     opacity: 1;
   }
-`
+`;
 const CheckboxLabel = styled.label`
   display: flex;
   position: relative;
@@ -58,10 +58,10 @@ const CheckboxLabel = styled.label`
     background-color: transparent;
     border-radius: 0;
   }
-`
+`;
 const Text = styled.span`
   margin: 0 0 0 30px;
-`
+`;
 
 interface IContentTitleProps {
   name: string
@@ -71,7 +71,7 @@ interface IContentTitleProps {
 }
 
 const Checkbox: React.FC<IContentTitleProps> = props => {
-  const { name, value, checked, handleCheckbox } = props
+  const { name, value, checked, handleCheckbox } = props;
 
   return (
     <>
@@ -88,6 +88,6 @@ const Checkbox: React.FC<IContentTitleProps> = props => {
       </CheckboxLabel>
     </>
   )
-}
+};
 
 export default Checkbox

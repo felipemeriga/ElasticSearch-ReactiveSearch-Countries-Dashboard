@@ -1,8 +1,7 @@
 import { ITeamListUserState } from 'store/teams/types'
 
-export const DELETE_TASK = 'DELETE_TASK'
-export const FETCH_TASKS = 'FETCH_TASKS'
-export const DRAG_AND_DROP = 'DRAG_AND_DROP'
+export const DELETE_TASK = 'DELETE_TASK';
+export const FETCH_TASKS = 'FETCH_TASKS';
 
 export interface ITaskState {
   id: string
@@ -14,14 +13,6 @@ export interface ITaskState {
   line: number
   type: string
   users: ITeamListUserState[]
-}
-
-export interface ITasksDragAndDropAction {
-  type: typeof DRAG_AND_DROP
-  payload: {
-    e: any
-    type: string
-  }
 }
 
 export interface ITasksFetchTasksAction {

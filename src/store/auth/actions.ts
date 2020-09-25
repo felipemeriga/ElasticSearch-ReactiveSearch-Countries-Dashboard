@@ -5,4 +5,4 @@ export const checkAuth = (userInfo: IUserInfo): IAuthCheckAction => {
     type: AUTH,
     payload: userInfo
   }
-}
+};

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const variables = {
   color: '#0062ff',
   crossSize: 15
-}
+};
 
 const Wrapper = styled.div`
   width: 400px;
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
     cursor: not-allowed;
     border: 2px dashed #d5d5dc;
   }
-`
+`;
 const Button = styled.button`
   width: 38px;
   height: 38px;
@@ -28,7 +28,7 @@ const Button = styled.button`
   border: none;
   position: relative;
   outline: none;
-`
+`;
 const Cross = styled.div`
   width: ${variables.crossSize}px;
   height: ${variables.crossSize}px;
@@ -47,18 +47,18 @@ const Cross = styled.div`
   :after {
     transform: rotate(180deg);
   }
-`
+`;
 const Text = styled.span`
   font-size: 14px;
   margin-left: 5px;
-`
+`;
 
 interface IBigProps {
   name: string
 }
 
 const Big: React.FC<IBigProps> = props => {
-  const { name } = props
+  const { name } = props;
 
   return (
     <Wrapper>
@@ -68,6 +68,6 @@ const Big: React.FC<IBigProps> = props => {
       <Text>{name}</Text>
     </Wrapper>
   )
-}
+};
 
 export default React.memo(Big)

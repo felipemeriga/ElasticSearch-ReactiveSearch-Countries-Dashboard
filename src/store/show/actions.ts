@@ -11,11 +11,11 @@ export const showMore = (types: IShowTypes): IShowMoreAction => {
     type: SHOW_MORE,
     payload: types
   }
-}
+};
 
 export const switchKanban = (option: boolean): ISwitchKanbanAction => {
   return {
     type: SWITCH_KANBAN,
     payload: option
   }
-}
+};

@@ -15,6 +15,6 @@ const Default = () => {
       />
     </svg>
   )
-}
+};
 
 export default Default

@@ -11,7 +11,7 @@ const variables = {
   colorGray: '#92929d',
   colorRed: '#fc5a5a',
   colorWhite: '#ffffff'
-}
+};
 
 const Wrapper = styled.section`
   position: absolute;
@@ -23,7 +23,7 @@ const Wrapper = styled.section`
   justify-content: center;
   background-color: rgba(23, 23, 37, 0.4);
   z-index: 100;
-`
+`;
 const Modal = styled.div`
   display: flex;
   flex-direction: column;
@@ -33,7 +33,7 @@ const Modal = styled.div`
   background-color: ${variables.colorWhite};
   border-radius: 20px;
   padding: 20px 25px;
-`
+`;
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
@@ -42,7 +42,7 @@ const Header = styled.div`
   font-size: 14px;
   height: 50px;
   border-bottom: 1px solid #e2e2ea;
-`
+`;
 const Button = styled.button`
   background-color: ${variables.colorWhite};
   border: none;
@@ -54,12 +54,12 @@ const Button = styled.button`
       fill: #0062ff;
     }
   }
-`
+`;
 const Title = styled.div`
   color: #171725;
   font-size: 24px;
   margin: 30px 0;
-`
+`;
 const Delete = styled.button`
   display: flex;
   justify-content: center;
@@ -76,7 +76,7 @@ const Delete = styled.button`
     color: ${variables.colorRed};
     background-color: ${variables.colorWhite};
   }
-`
+`;
 
 interface ITaskModalProps extends ITaskState {
   deleteTask: typeof deleteTask
@@ -84,13 +84,13 @@ interface ITaskModalProps extends ITaskState {
 }
 
 const TaskModal: React.FC<ITaskModalProps> = props => {
-  const { type, title, onClose, id, deleteTask } = props
+  const { type, title, onClose, id, deleteTask } = props;
 
-  const element = document.getElementById('modal')
+  const element = document.getElementById('modal');
 
   const removeTask = (id: string) => {
     deleteTask(id)
-  }
+  };
 
   return ReactDOM.createPortal(
     <Wrapper>
@@ -110,11 +110,11 @@ const TaskModal: React.FC<ITaskModalProps> = props => {
     </Wrapper>,
     element
   )
-}
+};
 
 const mapDispatchToProps = {
   deleteTask
-}
+};
 export default connect(
   null,
   mapDispatchToProps

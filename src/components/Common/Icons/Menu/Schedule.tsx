@@ -15,6 +15,6 @@ const IconSchedule = () => {
       />
     </svg>
   )
-}
+};
 
 export default IconSchedule

@@ -15,6 +15,6 @@ const IconMessages = () => {
       />
     </svg>
   )
-}
+};
 
 export default IconMessages

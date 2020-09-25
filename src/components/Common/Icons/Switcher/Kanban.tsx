@@ -15,6 +15,6 @@ const Kanban = () => {
       />
     </svg>
   )
-}
+};
 
 export default Kanban

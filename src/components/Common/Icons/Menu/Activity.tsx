@@ -15,6 +15,6 @@ const IconActivity = () => {
       />
     </svg>
   )
-}
+};
 
 export default IconActivity

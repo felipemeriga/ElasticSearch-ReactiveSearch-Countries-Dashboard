@@ -5,7 +5,7 @@ const variables = {
   color: '#0062ff',
   colorBorder: '#e2e2ea',
   crossSize: 16
-}
+};
 
 const Cross = styled.div`
   position: absolute;
@@ -28,7 +28,7 @@ const Cross = styled.div`
   :after {
     transform: rotate(180deg);
   }
-`
+`;
 const Wrapper = styled.button`
   height: 35px;
   width: 100%;
@@ -47,7 +47,7 @@ const Wrapper = styled.button`
   :hover ${Cross}:after {
     background-color: ${variables.color};
   }
-`
+`;
 
 const Button = () => {
   return (
@@ -55,6 +55,6 @@ const Button = () => {
       <Cross />
     </Wrapper>
   )
-}
+};
 
 export default Button

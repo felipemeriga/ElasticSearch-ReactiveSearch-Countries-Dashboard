@@ -1,4 +1,4 @@
-export const FETCH_TEAMS = 'FETCH_TEAMS'
+export const FETCH_TEAMS = 'FETCH_TEAMS';
 
 export interface ITeamListUserState {
   size: number

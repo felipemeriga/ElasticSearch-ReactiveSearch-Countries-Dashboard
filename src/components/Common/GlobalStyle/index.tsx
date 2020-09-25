@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
+// @ts-ignore
 import Roboto from 'assets/fonts/Roboto/Roboto-Regular.woff'
+// @ts-ignore
 import Poppins from 'assets/fonts/Poppins/Poppins-Regular.woff'
 
 export const GlobalStyle = createGlobalStyle`
@@ -18,4 +20,4 @@ export const GlobalStyle = createGlobalStyle`
   body {
   font-family: 'Poppins', sans-serif;
 }
-`
+`;

@@ -17,6 +17,6 @@ const Attach = () => {
       />
     </svg>
   )
-}
+};
 
 export default Attach

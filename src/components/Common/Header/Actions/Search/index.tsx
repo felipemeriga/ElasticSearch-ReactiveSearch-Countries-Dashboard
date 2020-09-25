@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   @media (max-width: 450px) {
     display: none;
   }
-`
+`;
 const Input = styled.input`
   width: 86px;
   height: 38px;
@@ -27,7 +27,7 @@ const Input = styled.input`
     outline: none;
     padding: 0 10px;
   }
-`
+`;
 
 const Search = () => {
   return (
@@ -35,6 +35,6 @@ const Search = () => {
       <Input type='search' placeholder='' />
     </Wrapper>
   )
-}
+};
 
 export default Search

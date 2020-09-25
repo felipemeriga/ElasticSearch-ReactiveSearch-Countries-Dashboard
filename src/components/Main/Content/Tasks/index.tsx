@@ -6,6 +6,7 @@ import Task from 'components/Common/Task'
 import { ITaskState } from 'store/tasks/types'
 import { getTasks } from 'store/tasks/selectors'
 import IconOval from 'components/Common/Icons/Common/Oval'
+import {fetchTasks} from '../../../../store/tasks/actions';
 
 const Wrapper = styled.div`
   border: 1px solid #e2e2ea;
@@ -14,17 +15,17 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 5px;
-`
+`;
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
-`
+`;
 const TeamsTitle = styled.span`
   font-size: 16px;
   letter-spacing: 0.1px;
   color: #696974;
   padding: 15px 20px;
-`
+`;
 const TeamsMore = styled.div`
   padding: 0 20px;
   display: flex;
@@ -33,46 +34,67 @@ const TeamsMore = styled.div`
   @media (max-width: 450px) {
     display: none;
   }
-`
+`;
 const Teams = styled.div`
   display: flex;
   flex-wrap: wrap;
-`
+`;
 const TasksWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-`
+`;
 
-interface IContentTasksProps {
-  tasks: ITaskState[]
+interface IStateProps {
+  tasks: ITaskState[];
+  fetchTasks: typeof fetchTasks;
 }
 
-const Tasks: React.FC<IContentTasksProps> = props => {
-  const { tasks } = props
-
-  const tasksList = tasks.map((item: ITaskState) => (
-    <Task data={item} key={item.id} />
-  ))
-
-  return (
-    <Wrapper>
-      <Header>
-        <TeamsTitle>Tasks</TeamsTitle>
-        <TeamsMore>
-          <IconOval />
-        </TeamsMore>
-      </Header>
-      <Teams>
-        <TasksWrapper>{tasksList}</TasksWrapper>
-      </Teams>
-    </Wrapper>
-  )
+interface IDispatchProps {
+    fetchTasks: () => any;
 }
 
-const mapStateToProps = (state: AppState) => {
+type Props = IStateProps & IDispatchProps;
+
+class Tasks extends React.Component<Props> {
+
+    componentWillMount(): void {
+        const { fetchTasks } = this.props;
+        fetchTasks();
+    }
+
+    public render = () => {
+        const { tasks } = this.props;
+
+        const tasksList = tasks.map((item: ITaskState) => (
+            <Task data={item} key={item.id}/>
+        ));
+
+        return (
+            <Wrapper>
+                <Header>
+                    <TeamsTitle>Tasks</TeamsTitle>
+                    <TeamsMore>
+                        <IconOval />
+                    </TeamsMore>
+                </Header>
+                <Teams>
+                    <TasksWrapper>{tasksList}</TasksWrapper>
+                </Teams>
+            </Wrapper>
+        )
+    };
+}
+
+const mapStateToProps = (state: AppState): {tasks: ITaskState[]} => {
   return {
     tasks: getTasks(state)
   }
-}
+};
 
-export default connect(mapStateToProps)(Tasks)
+const mapDispatchToProps = (dispatch: any): IDispatchProps => {
+    return {
+        fetchTasks: () => dispatch(fetchTasks())
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Tasks)

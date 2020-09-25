@@ -13,7 +13,7 @@ const initialState: IShowState = {
     complete: true
   },
   kanban: true
-}
+};
 
 export function show(
   state = initialState,
@@ -21,9 +21,9 @@ export function show(
 ): IShowState {
   switch (action.type) {
     case SHOW_MORE:
-      return { ...state, list: { ...action.payload } }
+      return { ...state, list: { ...action.payload } };
     case SWITCH_KANBAN:
-      return { ...state, kanban: action.payload }
+      return { ...state, kanban: action.payload };
     default:
       return state
   }

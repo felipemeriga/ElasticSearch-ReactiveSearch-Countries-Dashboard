@@ -15,6 +15,6 @@ const IconDashboard = () => {
       />
     </svg>
   )
-}
+};
 
 export default IconDashboard

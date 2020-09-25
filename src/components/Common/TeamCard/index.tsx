@@ -21,12 +21,12 @@ const Wrapper = styled.div`
   @media (max-width: 450px) {
     padding: 10px;
   }
-`
+`;
 const Header = styled.div`
   display: grid;
   grid-template-columns: 52px auto auto;
   column-gap: 20px;
-`
+`;
 const Image = styled.div`
   width: 52px;
   height: 52px;
@@ -39,20 +39,20 @@ const Image = styled.div`
     width: 45px;
     height: 45px;
   }
-`
+`;
 const TeamName = styled.span`
   display: grid;
   align-items: center;
   font-size: 16px;
   letter-spacing: 0.1px;
   color: #171725;
-`
+`;
 const More = styled.div`
   display: grid;
   justify-items: end;
   align-items: start;
   cursor: not-allowed;
-`
+`;
 const AvatarWrapper = styled.div`
   display: flex;
   margin-top: 20px;
@@ -62,7 +62,7 @@ const AvatarWrapper = styled.div`
   div {
     margin-right: 10px;
   }
-`
+`;
 
 interface ITeamCardProps {
   id: number
@@ -75,10 +75,10 @@ const Avatars = (props: ITeamCardProps): any => {
   return props.users.map((avatar: ITeamListUserState, idx: number): object => (
     <Avatar key={idx} {...avatar} />
   ))
-}
+};
 
 const TeamCard: React.FC<ITeamCardProps> = props => {
-  const { avatar, name } = props
+  const { avatar, name } = props;
 
   return (
     <Wrapper>
@@ -96,6 +96,6 @@ const TeamCard: React.FC<ITeamCardProps> = props => {
       </AvatarWrapper>
     </Wrapper>
   )
-}
+};
 
 export default TeamCard

@@ -15,6 +15,6 @@ const IconSettings = () => {
       />
     </svg>
   )
-}
+};
 
 export default IconSettings
