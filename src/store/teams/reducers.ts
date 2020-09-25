@@ -6,7 +6,7 @@ import {
 
 const initialState: ITeamsState = {
   list: []
-}
+};
 
 export function teams(
   state = initialState,
@@ -14,7 +14,7 @@ export function teams(
 ): ITeamsState {
   switch (action.type) {
     case FETCH_TEAMS:
-      return { ...state, list: action.payload }
+      return { ...state, list: action.payload };
     default:
       return state
   }

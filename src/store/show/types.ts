@@ -1,5 +1,5 @@
-export const SHOW_MORE = 'SHOW_MORE'
-export const SWITCH_KANBAN = 'SWITCH_KANBAN'
+export const SHOW_MORE = 'SHOW_MORE';
+export const SWITCH_KANBAN = 'SWITCH_KANBAN';
 
 export interface IShowTypes {
   backlog: boolean

@@ -4,7 +4,7 @@ const initialState: IAuthState = {
   isAuth: true,
   login: '',
   password: ''
-}
+};
 
 export function auth(
   state = initialState,
@@ -19,7 +19,7 @@ export function auth(
           login: action.payload.login,
           password: action.payload.password
         }
-      )
+      );
     default:
       return state
   }

@@ -9,4 +9,4 @@ export const fetchTeams = () => async (dispatch: Dispatch): Promise<void> => {
   } catch (err) {
     console.error(`[Action: fetchTeams] - ${err}`)
   }
-}
+};

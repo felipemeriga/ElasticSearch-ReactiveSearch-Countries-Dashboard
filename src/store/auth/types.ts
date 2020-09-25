@@ -1,4 +1,4 @@
-export const AUTH = 'AUTH'
+export const AUTH = 'AUTH';
 
 export interface IUserInfo {
   login: string
