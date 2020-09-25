@@ -6,7 +6,7 @@ const Wrapper = styled.span`
   color: ${(props: ILogoTitleProps) => props.color};
   font-weight: 900;
   margin-left: 5px;
-`
+`;
 
 interface ILogoTitleProps {
   size: number
@@ -15,9 +15,9 @@ interface ILogoTitleProps {
 }
 
 const Title: React.FC<ILogoTitleProps> = props => {
-  const { text } = props
+  const { text } = props;
 
   return <Wrapper {...props}>{text}</Wrapper>
-}
+};
 
 export default Title

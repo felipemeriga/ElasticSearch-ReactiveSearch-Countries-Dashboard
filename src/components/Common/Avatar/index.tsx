@@ -6,7 +6,7 @@ const WithAvatarWrapper = styled.img`
   height: ${(props: IAvatarProps) => props.size}px;
   cursor: not-allowed;
   border-radius: ${(props: IAvatarProps) => props.size}px;
-`
+`;
 const WithoutAvatarWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -18,7 +18,7 @@ const WithoutAvatarWrapper = styled.div`
   border-radius: ${(props: IAvatarProps) => props.size}px;
   cursor: not-allowed;
   background-color: ${(props: IAvatarProps) => props.color};
-`
+`;
 
 interface IAvatarProps {
   size: number
@@ -29,18 +29,18 @@ interface IAvatarProps {
 
 const WithAvatar = (props: IAvatarProps) => {
   return <WithAvatarWrapper {...props} src={props.avatar} alt='User avatar' />
-}
+};
 
 const WithoutAvatar = (props: IAvatarProps) => {
   return <WithoutAvatarWrapper {...props}>{props.name}</WithoutAvatarWrapper>
-}
+};
 
 const Avatar: React.FC<IAvatarProps> = props => {
-  const { avatar } = props
+  const { avatar } = props;
 
   return (
     <>{avatar ? <WithAvatar {...props} /> : <WithoutAvatar {...props} />}</>
   )
-}
+};
 
 export default Avatar

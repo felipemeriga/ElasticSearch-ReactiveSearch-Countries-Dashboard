@@ -95,6 +95,6 @@ const IconGoogle = () => {
       </g>
     </svg>
   )
-}
+};
 
 export default IconGoogle

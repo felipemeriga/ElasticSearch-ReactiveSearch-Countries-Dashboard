@@ -15,6 +15,6 @@ const IconTasks = () => {
       />
     </svg>
   )
-}
+};
 
 export default IconTasks

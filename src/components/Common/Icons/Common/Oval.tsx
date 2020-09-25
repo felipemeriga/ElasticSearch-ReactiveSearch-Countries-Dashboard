@@ -17,6 +17,6 @@ const IconOval = () => {
       />
     </svg>
   )
-}
+};
 
 export default IconOval

@@ -31,13 +31,13 @@ const Wrapper = styled.div`
       : 'white'};
   border: ${props => (props.drag ? '1px dashed #92929d' : '1px dashed white')};
   opacity: ${props => (props.drag ? '0.999' : '1')};
-`
+`;
 const Users = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-gap: 10px;
   margin: 10px 0 0 0;
-`
+`;
 
 interface ITaskProps {
   data: ITaskState
@@ -47,25 +47,25 @@ interface ITaskProps {
 }
 
 const Task: React.FC<ITaskProps> = props => {
-  const { data } = props
+  const { data } = props;
 
-  const [modal, setModal] = React.useState<boolean>(false)
-  const [drag, setDrag] = React.useState<boolean>(false)
+  const [modal, setModal] = React.useState<boolean>(false);
+  const [drag, setDrag] = React.useState<boolean>(false);
 
   const onDragStart = (e: React.DragEvent<HTMLDivElement>): void => {
-    setDrag(prevState => !prevState)
+    setDrag(prevState => !prevState);
     e.dataTransfer.setData('text/html', data.id)
-  }
+  };
 
   const toggleModal = (): void => {
     setModal(prevState => !prevState)
-  }
+  };
 
   const users = data.users.map(
     (user: ITeamListUserState, idx: number): object => (
       <Avatar key={idx} {...user} />
     )
-  )
+  );
 
   return (
     <>
@@ -84,11 +84,11 @@ const Task: React.FC<ITaskProps> = props => {
       <>{modal && <TaskModal {...data} onClose={toggleModal} />}</>
     </>
   )
-}
+};
 const mapStateToProps = (state: AppState) => {
   return {
     option: getKanbanOption(state)
   }
-}
+};
 
 export default connect(mapStateToProps)(Task)

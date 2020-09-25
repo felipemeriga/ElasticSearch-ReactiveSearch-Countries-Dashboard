@@ -4,7 +4,7 @@ import Avatar from 'components/Common/Avatar'
 
 const variables = {
   size: 12
-}
+};
 
 const Notification = styled.div`
   background-color: #fc5a5a;
@@ -16,7 +16,7 @@ const Notification = styled.div`
   top: -6px;
   opacity: 1;
   transition: opacity 0.4s;
-`
+`;
 const ShapeInfo = styled.div`
   z-index: 1;
   width: 200px;
@@ -32,11 +32,11 @@ const ShapeInfo = styled.div`
   color: #696974;
   font-size: 12px;
   padding: 15px;
-`
+`;
 const Text = styled.span`
   font-style: italic;
   margin: 10px 0 0 0;
-`
+`;
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -50,7 +50,7 @@ const Wrapper = styled.div`
   :hover ${ShapeInfo} {
     display: flex;
   }
-`
+`;
 const AvatarWrapper = styled.div`
   display: flex;
   width: 25px;
@@ -58,14 +58,14 @@ const AvatarWrapper = styled.div`
   span {
     margin: 0 0 0 10px;
   }
-`
+`;
 
 const userProps = {
   size: 25,
   name: 'TE',
   color: '',
   avatar: require('assets/images/james.png')
-}
+};
 
 const textNotification = `React can also render on the server using Node and power mobile apps using React Native`
 const ShapeIcon = (): object => {
@@ -85,7 +85,7 @@ const ShapeIcon = (): object => {
       />
     </svg>
   )
-}
+};
 
 const Shape = () => {
   const notification = true
@@ -105,6 +105,6 @@ const Shape = () => {
       </>
     </Wrapper>
   )
-}
+};
 
 export default Shape

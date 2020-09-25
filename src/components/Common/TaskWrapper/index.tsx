@@ -13,11 +13,11 @@ const variables = {
   color: '#0062ff',
   colorBorder: '#e2e2ea',
   crossSize: 16
-}
+};
 
 const Wrapper = styled.div`
   width: ${(props: ITaskWrapperProps) => (props.option ? '280px' : 'auto')};
-`
+`;
 const Header = styled.div`
   border-radius: 15px 15px 0 0;
   border-top: 1px solid ${variables.colorBorder};
@@ -25,13 +25,13 @@ const Header = styled.div`
   border-right: 1px solid ${variables.colorBorder};
   display: flex;
   justify-content: space-between;
-`
+`;
 const Title = styled.span`
   font-size: 16px;
   letter-spacing: 0.1px;
   color: #696974;
   padding: 15px 20px;
-`
+`;
 const More = styled.div`
   padding: 0 20px;
   display: flex;
@@ -40,7 +40,7 @@ const More = styled.div`
   @media (max-width: 450px) {
     display: none;
   }
-`
+`;
 const TasksWrapper = styled<DragWrapperProps>('div')`
   height: auto;
   border-left: 1px solid ${variables.colorBorder};
@@ -56,7 +56,7 @@ const TasksWrapper = styled<DragWrapperProps>('div')`
     #E3ECFB 10px
   )`
       : 'none'};
-`
+`;
 
 type DragWrapperProps = {
   dragOver: () => void
@@ -73,29 +73,29 @@ const Tasks = (props: ITaskWrapperProps): any => {
   return props.data.map((item: ITaskState) => (
     <Task data={item} key={item.id} />
   ))
-}
+};
 
 const TaskWrapper: React.FC<ITaskWrapperProps> = props => {
-  const { type, dragAndDrop } = props
+  const { type, dragAndDrop } = props;
 
   const [dragOver, setDragOver] = React.useState<boolean>(false)
 
   const onDragOver = (e: React.DragEvent<HTMLDivElement>): void => {
     e.preventDefault()
-  }
+  };
 
   const onDragEnter = (): void => {
     setDragOver(prevState => !prevState)
-  }
+  };
 
   const onDragLeave = (): void => {
     setDragOver(prevState => !prevState)
-  }
+  };
 
   const onDrop = (e: React.DragEvent<HTMLDivElement>): void => {
     dragAndDrop(e, type)
     setDragOver(false)
-  }
+  };
 
   return (
     <Wrapper
@@ -117,17 +117,17 @@ const TaskWrapper: React.FC<ITaskWrapperProps> = props => {
       <Button />
     </Wrapper>
   )
-}
+};
 
 const mapStateToProps = (state: AppState) => {
   return {
     option: getKanbanOption(state)
   }
-}
+};
 
 const mapDispatchToProps = {
   dragAndDrop
-}
+};
 
 export default connect(
   mapStateToProps,

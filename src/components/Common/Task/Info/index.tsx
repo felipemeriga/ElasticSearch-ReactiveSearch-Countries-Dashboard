@@ -9,18 +9,18 @@ const TextStyles = styled.div`
   font-size: 14px;
   letter-spacing: 0.1px;
   color: #92929d;
-`
+`;
 const Wrapper = styled.div`
   display: flex;
   margin: 15px 0 10px 0;
-`
+`;
 const Attach = styled(TextStyles)`
   display: flex;
   align-items: center;
   svg {
     margin-right: 5px;
   }
-`
+`;
 const Status = styled(TextStyles)`
   margin: 0 15px 0 20px;
   display: flex;
@@ -31,7 +31,7 @@ const Status = styled(TextStyles)`
     width: 14px;
     height: 14px;
   }
-`
+`;
 const Activity = styled(Status)`
   background-color: ${(props: IInfoProps) => props.data.score.colors.bg};
   color: ${(props: IInfoProps) => props.data.score.colors.text};
@@ -44,14 +44,14 @@ const Activity = styled(Status)`
   svg {
     fill: ${(props: IInfoProps) => props.data.score.colors.text};
   }
-`
+`;
 
 interface IInfoProps {
   data: ITaskState
 }
 
 const Info: React.FC<IInfoProps> = props => {
-  const { data } = props
+  const { data } = props;
 
   return (
     <Wrapper>
@@ -72,6 +72,6 @@ const Info: React.FC<IInfoProps> = props => {
       )}
     </Wrapper>
   )
-}
+};
 
 export default Info

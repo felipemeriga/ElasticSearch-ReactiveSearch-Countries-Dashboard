@@ -13,16 +13,15 @@ const Wrapper = styled.section`
   @media (max-width: 450px) {
     padding: 10px;
   }
-`
+`;
 
 const Content = () => {
   return (
     <Wrapper>
       <ContentTitle />
-
       <ContentTasks />
     </Wrapper>
   )
-}
+};
 
 export default Content

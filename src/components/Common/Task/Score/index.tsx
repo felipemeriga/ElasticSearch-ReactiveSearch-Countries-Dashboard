@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   flex-direction: ${(props: IScoreProps) =>
     props.option ? 'column' : 'row-reverse'};
   align-items: ${(props: IScoreProps) => !props.option && 'center'};
-`
+`;
 const ScoreLine = styled.div`
   background-color: #e2e2ea;
   width: 100%;
@@ -22,7 +22,7 @@ const ScoreLine = styled.div`
     background-color: #3dd598;
     width: ${(props: IScoreProps) => `${props.data.line}%`};
   }
-`
+`;
 const ScoreLineTitle = styled.div`
   font-size: 14px;
   letter-spacing: 0.1px;
@@ -31,7 +31,7 @@ const ScoreLineTitle = styled.div`
   justify-content: flex-end;
   width: 100%;
   margin-left: ${(props: IScoreProps) => !props.option && '10px'};
-`
+`;
 
 interface IScoreProps {
   data: ITaskState
@@ -39,7 +39,7 @@ interface IScoreProps {
 }
 
 const Score: React.FC<IScoreProps> = props => {
-  const { data } = props
+  const { data } = props;
 
   return (
     <Wrapper {...props}>
@@ -49,12 +49,12 @@ const Score: React.FC<IScoreProps> = props => {
       </ScoreLine>
     </Wrapper>
   )
-}
+};
 
 const mapStateToProps = (state: AppState) => {
   return {
     option: getKanbanOption(state)
   }
-}
+};
 
 export default connect(mapStateToProps)(Score)

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const variables = {
   color: '#0062ff'
-}
+};
 
 const Wrapper = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   height: ${(props: ILoaderProps) =>
     props.height === 'none' ? 'none' : '98vh'};
   margin: 0 auto;
-`
+`;
 const Svg = styled.svg`
   @keyframes rotate {
     0% {
@@ -23,7 +23,7 @@ const Svg = styled.svg`
     }
   }
   animation: rotate 1.4s linear infinite;
-`
+`;
 const Circle = styled.circle`
   @keyframes colors {
     0% {
@@ -50,7 +50,7 @@ const Circle = styled.circle`
   stroke-dashoffset: 0;
   transform-origin: center;
   animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
-`
+`;
 
 interface ILoaderProps {
   height?: string
@@ -76,6 +76,6 @@ const Loader: React.FC<ILoaderProps> = props => {
       </Svg>
     </Wrapper>
   )
-}
+};
 
 export default Loader

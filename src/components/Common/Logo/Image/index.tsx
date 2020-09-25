@@ -6,7 +6,7 @@ interface ILogoImageProps {
 }
 
 const Image: React.FC<ILogoImageProps> = props => {
-  const { size, color } = props
+  const { size, color } = props;
 
   return (
     <svg
@@ -36,6 +36,6 @@ const Image: React.FC<ILogoImageProps> = props => {
       />
     </svg>
   )
-}
+};
 
 export default Image
