@@ -1,7 +1,12 @@
 import axios, {AxiosInstance} from 'axios'
 
-const instance: AxiosInstance = axios.create({
-  baseURL: process.env.API_URL
+const axiosInstance: AxiosInstance = axios.create({
+  baseURL: 'https://restcountries.eu/rest/v2',
+  timeout: 10000,
+  headers: {
+    Accept: 'application/json',
+    'Content-type': 'application/json'
+  }
 });
 
-export default instance
+export default axiosInstance

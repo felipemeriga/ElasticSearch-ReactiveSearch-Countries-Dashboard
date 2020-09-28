@@ -7,6 +7,7 @@ import { ITaskState } from 'store/tasks/types'
 import { getTasks } from 'store/tasks/selectors'
 import IconOval from 'components/Common/Icons/Common/Oval'
 import {fetchTasks} from '../../../../store/tasks/actions';
+import confirm from '../../../../utils/api';
 
 const Wrapper = styled.div`
   border: 1px solid #e2e2ea;
