@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   border-radius: 20px;
   padding: 15px;
   margin: 0 5px 10px 5px;
-  background: white;
+  background-color: #e0f1f9;
 `;
 const Users = styled.div`
   display: grid;
