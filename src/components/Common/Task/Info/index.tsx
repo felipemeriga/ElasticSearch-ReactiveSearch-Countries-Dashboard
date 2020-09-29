@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { ITaskState } from 'store/tasks/types'
-import TasksIcon from 'components/Common/Icons/Menu/Tasks'
+import TasksIcon from 'components/Common/Icons/Menu/CityIcon'
 import AttachIcon from 'components/Common/Icons/Common/Attach'
 import ActivityIcon from 'components/Common/Icons/Menu/Activity'
 
