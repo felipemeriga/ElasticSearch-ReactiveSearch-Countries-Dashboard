@@ -1,11 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 import { ITaskState } from 'store/tasks/types'
+import Index from '../../Flag';
 
 const TextStyles = styled.div`
   font-size: 14px;
   letter-spacing: 0.1px;
   color: #92929d;
+`;
+const TittleWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+    align-items: center;
+     justify-content: center;
 `;
 const Wrapper = styled.div`
   display: flex;
@@ -21,6 +28,10 @@ const Team = styled(TextStyles)`
   color: #696974;
 `;
 
+const FlagWrapper = styled(Index)`
+  margin-left: 8vh;
+`;
+
 interface ITitleProps {
   data: ITaskState
 }
@@ -29,10 +40,16 @@ const Titles: React.FC<ITitleProps> = props => {
   const { data } = props;
 
   return (
-    <Wrapper>
-      <Title {...props}>{data.title}</Title>
-      <Team>{data.team}</Team>
-    </Wrapper>
+  <Wrapper>
+    <TittleWrapper>
+      <Title {...props}>{data.title}
+      </Title>
+        <FlagWrapper url={'https://restcountries.eu/data/irl.svg'}/>
+    </TittleWrapper>
+      <Team>
+          {data.team}
+      </Team>
+  </Wrapper>
   );
 };
 

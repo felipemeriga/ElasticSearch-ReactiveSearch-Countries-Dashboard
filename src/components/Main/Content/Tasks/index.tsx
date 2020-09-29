@@ -78,7 +78,9 @@ class Tasks extends React.Component<Props> {
                     </TeamsMore>
                 </Header>
                 <Teams>
-                    <TasksWrapper>{tasksList}</TasksWrapper>
+                    <TasksWrapper>
+                        {tasksList}
+                    </TasksWrapper>
                 </Teams>
             </Wrapper>
         )

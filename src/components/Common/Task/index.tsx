@@ -2,13 +2,10 @@ import React from 'react'
 import { AppState } from 'store'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import Avatar from 'components/Common/Avatar'
 import Info from 'components/Common/Task/Info'
 import { ITaskState } from 'store/tasks/types'
-import Score from 'components/Common/Task/Score'
 import Titles from 'components/Common/Task/Titles'
 import TaskModal from 'components/Common/TaskModal'
-import { ITeamListUserState } from 'store/teams/types'
 import { getKanbanOption } from 'store/show/selectors'
 
 const Wrapper = styled.div`
@@ -18,14 +15,8 @@ const Wrapper = styled.div`
   cursor: pointer;
   border-radius: 20px;
   padding: 15px;
-  margin: 0 5px 10px 5px;
+  margin: 0 5px 30px 25px;
   background-color: #e0f1f9;
-`;
-const Users = styled.div`
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-gap: 10px;
-  margin: 10px 0 0 0;
 `;
 
 interface ITaskProps {
@@ -43,12 +34,6 @@ const Task: React.FC<ITaskProps> = props => {
     setModal(prevState => !prevState)
   };
 
-  const users = data.users.map(
-    (user: ITeamListUserState, idx: number): object => (
-      <Avatar key={idx} {...user} />
-    )
-  );
-
   return (
     <>
       <Wrapper
@@ -57,8 +42,6 @@ const Task: React.FC<ITaskProps> = props => {
       >
         <Titles data={data} />
         <Info data={data} />
-        <Score data={data} />
-        <Users>{users}</Users>
       </Wrapper>
       <>{modal && <TaskModal {...data} onClose={toggleModal} />}</>
     </>
