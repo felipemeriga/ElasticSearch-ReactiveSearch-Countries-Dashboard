@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { ITaskState } from 'store/tasks/types'
-import TasksIcon from 'components/Common/Icons/Menu/CityIcon'
-import AttachIcon from 'components/Common/Icons/Common/Attach'
-import ActivityIcon from 'components/Common/Icons/Menu/Activity'
+import CityIcon from 'components/Common/Icons/Menu/CityIcon';
+import MoneyIcon from '../../Icons/Menu/MoneyIcon';
+import RegionIcon from '../../Icons/Menu/RegionIcon';
 
 const TextStyles = styled.div`
   font-size: 14px;
@@ -32,19 +32,6 @@ const Status = styled(TextStyles)`
     height: 14px;
   }
 `;
-const Activity = styled(Status)`
-  background-color: ${(props: IInfoProps) => props.data.score.colors.bg};
-  color: ${(props: IInfoProps) => props.data.score.colors.text};
-  padding: 5px;
-  border-radius: 5px;
-  margin: 0;
-  span:last-child {
-    margin-left: 5px;
-  }
-  svg {
-    fill: ${(props: IInfoProps) => props.data.score.colors.text};
-  }
-`;
 
 interface IInfoProps {
   data: ITaskState
@@ -55,21 +42,18 @@ const Info: React.FC<IInfoProps> = props => {
 
   return (
     <Wrapper>
-      <Attach>
-        <AttachIcon />
-        {data.attach}
-      </Attach>
       <Status>
-        <TasksIcon />
+        <CityIcon />
+        {data.attach}
+      </Status>
+      <Status>
+        <MoneyIcon />
         {data.status}
       </Status>
-      {data.score.days > 0 && (
-        <Activity {...props}>
-          <ActivityIcon />
-          <span>{data.score.days}</span>
-          <span>days left</span>
-        </Activity>
-      )}
+        <Status>
+            <RegionIcon />
+            {data.status}
+        </Status>
     </Wrapper>
   )
 };
