@@ -11,8 +11,8 @@ const TextStyles = styled.div`
 const TittleWrapper = styled.div`
   display: flex;
   flex-direction: row;
-    align-items: center;
-     justify-content: center;
+  align-items: center;
+  justify-content: center;
 `;
 const Wrapper = styled.div`
   display: flex;
@@ -28,7 +28,7 @@ const Team = styled(TextStyles)`
 `;
 
 const FlagWrapper = styled(Index)`
-  margin-left: 8vh;
+  margin-left: 15vh;
 `;
 
 interface ITitleProps {
@@ -41,13 +41,13 @@ const Titles: React.FC<ITitleProps> = props => {
   return (
   <Wrapper>
     <TittleWrapper>
-      <Title {...props}>{data.name}
-      </Title>
+      <Title {...props}>{data.name}</Title>
+      <div>&nbsp;</div>
+      <Title {...props}>({data.nativeName})</Title>
+
         <FlagWrapper url={data.flag}/>
     </TittleWrapper>
-      <Team>
-          {data.nativeName}
-      </Team>
+
   </Wrapper>
   );
 };

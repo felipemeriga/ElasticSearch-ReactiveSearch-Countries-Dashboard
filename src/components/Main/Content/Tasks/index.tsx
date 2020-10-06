@@ -18,6 +18,12 @@ const Wrapper = styled.div`
   flex-direction: column;
   padding: 5px;
 `;
+
+const StyledDiv = styled(Task) `
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+`;
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
@@ -68,7 +74,6 @@ class Tasks extends React.Component<Props> {
         return (
             <Wrapper>
                 <Header>
-                    <TeamsTitle>Tasks</TeamsTitle>
                     <TeamsMore>
                         <IconOval />
                     </TeamsMore>
@@ -79,13 +84,14 @@ class Tasks extends React.Component<Props> {
                             componentId='SearchResult'
                             dataField='name'
                             pagination
-                            size={10}
+                            showResultStats={false}
+                            size={20}
                             render={({ data }) => (
-                                <div>
+                                <ReactiveList.ResultCardsWrapper>
                                     {data.map((item: ICountryData) => (
                                         <Task data={item} key={item._id}/>
                                         ))}
-                                </div>
+                                </ReactiveList.ResultCardsWrapper>
                             )}/>
 
                     </TasksWrapper>
