@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ITaskState } from 'store/tasks/types'
 import Index from '../../Flag';
+import {ICountryData} from '../../../../store/countries/types';
 
 const TextStyles = styled.div`
   font-size: 14px;
@@ -21,8 +21,7 @@ const Wrapper = styled.div`
 const Title = styled(TextStyles)`
   color: #171725;
   margin-bottom: 7px;
-  text-decoration: ${(props: ITitleProps) =>
-    props.data.score.days === 0 && 'line-through'};
+  text-decoration: 0 && 'line-through';
 `;
 const Team = styled(TextStyles)`
   color: #696974;
@@ -33,7 +32,7 @@ const FlagWrapper = styled(Index)`
 `;
 
 interface ITitleProps {
-  data: ITaskState
+  data: ICountryData
 }
 
 const Titles: React.FC<ITitleProps> = props => {
@@ -42,12 +41,12 @@ const Titles: React.FC<ITitleProps> = props => {
   return (
   <Wrapper>
     <TittleWrapper>
-      <Title {...props}>{data.title}
+      <Title {...props}>{data.name}
       </Title>
-        <FlagWrapper url={'https://restcountries.eu/data/irl.svg'}/>
+        <FlagWrapper url={data.flag}/>
     </TittleWrapper>
       <Team>
-          {data.team}
+          {data.nativeName}
       </Team>
   </Wrapper>
   );

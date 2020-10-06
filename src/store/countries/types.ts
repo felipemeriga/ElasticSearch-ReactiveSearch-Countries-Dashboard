@@ -1,6 +1,7 @@
 export const FETCH_COUNTRIES = 'FETCH_COUNTRIES';
 
 export interface ICountryData {
+    _id: string;
     name: string
     topLevelDomain: string[];
     alpha2Code: string;
@@ -19,12 +20,18 @@ export interface ICountryData {
     borders: string[];
     nativeName: string;
     numericCode: number;
-    currencies: object[];
+    currencies: ICurrency[];
     languages: object[];
     translations: object;
     flag: string;
     regionalBlocs: object[];
     cioc: string;
+}
+
+export interface ICurrency {
+    code: string;
+    name: string;
+    symbol: string;
 }
 
 export interface ICountryFetchAction {

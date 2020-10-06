@@ -48,8 +48,8 @@ const Activity = () => {
         <Wrapper>
           <HeaderContent>
             <div>
-              <Username>Hi James,</Username>
-              <Text>here’s your currently activity</Text>
+              <Username>Hello,</Username>
+              <Text>Search for all available countries...</Text>
             </div>
           </HeaderContent>
         </Wrapper>

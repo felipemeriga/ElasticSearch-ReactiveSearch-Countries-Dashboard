@@ -3,10 +3,9 @@ import { AppState } from 'store'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import Info from 'components/Common/Task/Info'
-import { ITaskState } from 'store/tasks/types'
 import Titles from 'components/Common/Task/Titles'
-import TaskModal from 'components/Common/TaskModal'
 import { getKanbanOption } from 'store/show/selectors'
+import {ICountryData} from '../../../store/countries/types';
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,7 +19,7 @@ const Wrapper = styled.div`
 `;
 
 interface ITaskProps {
-  data: ITaskState
+  data: ICountryData
   key: string
   option: boolean
 }
@@ -43,7 +42,7 @@ const Task: React.FC<ITaskProps> = props => {
         <Titles data={data} />
         <Info data={data} />
       </Wrapper>
-      <>{modal && <TaskModal {...data} onClose={toggleModal} />}</>
+      {/*<>{modal && <TaskModal {...data} onClose={toggleModal} />}</>*/}
     </>
   )
 };

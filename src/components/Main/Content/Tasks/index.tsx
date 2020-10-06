@@ -7,6 +7,8 @@ import { ITaskState } from 'store/tasks/types'
 import { getTasks } from 'store/tasks/selectors'
 import IconOval from 'components/Common/Icons/Common/Oval'
 import {fetchTasks} from '../../../../store/tasks/actions';
+import {ReactiveList} from '@appbaseio/reactivesearch';
+import {ICountryData} from '../../../../store/countries/types';
 
 const Wrapper = styled.div`
   border: 1px solid #e2e2ea;
@@ -63,12 +65,6 @@ class Tasks extends React.Component<Props> {
     }
 
     public render = () => {
-        const { tasks } = this.props;
-
-        const tasksList = tasks.map((item: ITaskState) => (
-            <Task data={item} key={item.id}/>
-        ));
-
         return (
             <Wrapper>
                 <Header>
@@ -79,7 +75,19 @@ class Tasks extends React.Component<Props> {
                 </Header>
                 <Teams>
                     <TasksWrapper>
-                        {tasksList}
+                        <ReactiveList
+                            componentId='SearchResult'
+                            dataField='name'
+                            pagination
+                            size={10}
+                            render={({ data }) => (
+                                <div>
+                                    {data.map((item: ICountryData) => (
+                                        <Task data={item} key={item._id}/>
+                                        ))}
+                                </div>
+                            )}/>
+
                     </TasksWrapper>
                 </Teams>
             </Wrapper>

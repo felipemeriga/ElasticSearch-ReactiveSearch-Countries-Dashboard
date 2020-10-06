@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ITaskState } from 'store/tasks/types'
 import CityIcon from 'components/Common/Icons/Menu/CityIcon';
 import MoneyIcon from '../../Icons/Menu/MoneyIcon';
 import RegionIcon from '../../Icons/Menu/RegionIcon';
+import {ICountryData} from '../../../../store/countries/types';
 
 const TextStyles = styled.div`
   font-size: 14px;
@@ -13,13 +13,6 @@ const TextStyles = styled.div`
 const Wrapper = styled.div`
   display: flex;
   margin: 15px 0 10px 0;
-`;
-const Attach = styled(TextStyles)`
-  display: flex;
-  align-items: center;
-  svg {
-    margin-right: 5px;
-  }
 `;
 const Status = styled(TextStyles)`
   margin: 0 15px 0 20px;
@@ -34,7 +27,7 @@ const Status = styled(TextStyles)`
 `;
 
 interface IInfoProps {
-  data: ITaskState
+  data: ICountryData
 }
 
 const Info: React.FC<IInfoProps> = props => {
@@ -44,15 +37,15 @@ const Info: React.FC<IInfoProps> = props => {
     <Wrapper>
       <Status>
         <CityIcon />
-        {data.attach}
+          {data.capital}
       </Status>
       <Status>
         <MoneyIcon />
-        {data.status}
+          {data.currencies[0].symbol}
       </Status>
         <Status>
             <RegionIcon />
-            {data.status}
+            {data.region}
         </Status>
     </Wrapper>
   )
