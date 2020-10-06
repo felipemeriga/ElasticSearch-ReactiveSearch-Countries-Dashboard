@@ -1,7 +1,7 @@
 export const FETCH_COUNTRIES = 'FETCH_COUNTRIES';
 
 export interface ICountryData {
-    name: string;
+    name: string
     topLevelDomain: string[];
     alpha2Code: string;
     alpha3Code: string;
