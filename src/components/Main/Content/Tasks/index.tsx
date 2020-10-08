@@ -5,9 +5,8 @@ import styled from 'styled-components'
 import Task from 'components/Common/Task'
 import { ITaskState } from 'store/tasks/types'
 import { getTasks } from 'store/tasks/selectors'
-import IconOval from 'components/Common/Icons/Common/Oval'
 import {fetchTasks} from '../../../../store/tasks/actions';
-import {ReactiveList} from '@appbaseio/reactivesearch';
+import {DataSearch, MultiList, ReactiveList} from '@appbaseio/reactivesearch';
 import {ICountryData} from '../../../../store/countries/types';
 
 const Wrapper = styled.div`
@@ -18,30 +17,29 @@ const Wrapper = styled.div`
   flex-direction: column;
   padding: 5px;
 `;
-
-const StyledDiv = styled(Task) `
-  display: flex;
-  flex-direction: row;
-  width: 100%;
+const CountrySearch = styled(DataSearch) `
+  margin-top: 15px;
 `;
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
+const RegionList = styled(MultiList)`
+  padding: 20px;
+  margin: 35px 0 20px 0;
+  margin: 35px 0 20px 0;
+  border: 1px solid #e2e2ea;
+  border-radius: 30px;
 `;
-const TeamsTitle = styled.span`
-  font-size: 16px;
-  letter-spacing: 0.1px;
-  color: #696974;
-  padding: 15px 20px;
-`;
-const TeamsMore = styled.div`
-  padding: 0 20px;
+const SearchDiv = styled.div `
   display: flex;
-  align-items: center;
-  cursor: not-allowed;
-  @media (max-width: 450px) {
-    display: none;
-  }
+  margin-left: 4vh;
+`;
+const HeaderRow = styled.div`
+  display: flex;
+  justify-content: start;
+    flex-direction: row;
+`;
+const HeaderColumn = styled.div`
+  display: flex;
+  justify-content: start;
+    flex-direction: column;
 `;
 const Teams = styled.div`
   display: flex;
@@ -73,11 +71,55 @@ class Tasks extends React.Component<Props> {
     public render = () => {
         return (
             <Wrapper>
-                <Header>
-                    <TeamsMore>
-                        <IconOval />
-                    </TeamsMore>
-                </Header>
+                <HeaderColumn>
+                    <SearchDiv>
+                        <CountrySearch
+                            style={{'width': '99%'}}
+                            title='Search'
+                            componentId='SearchSensor'
+                            dataField={['name', 'region', 'nativeName']}
+                        />
+
+                    </SearchDiv>
+                </HeaderColumn>
+                <HeaderRow>
+                    <SearchDiv>
+                        <RegionList
+                            size={300}
+                            showCheckbox={true}
+                            componentId='RegionSensor'
+                            dataField='region.keyword'
+                            title='Region'
+                            react={{
+                                and: ['TimezoneSensor', 'SubRegionSensor']
+                            }}
+                        />
+                    </SearchDiv>
+                    <SearchDiv>
+                        <RegionList
+                            size={300}
+                            showCheckbox={true}
+                            componentId='SubRegionSensor'
+                            dataField='subregion.keyword'
+                            title='Region'
+                            react={{
+                                and: ['TimezoneSensor', 'RegionSensor']
+                            }}
+                        />
+                    </SearchDiv>
+                    <SearchDiv>
+                        <RegionList
+                            size={300}
+                            componentId='TimezoneSensor'
+                            showCheckbox={true}
+                            dataField='timezones.keyword'
+                            title='Timezone'
+                            react={{
+                                and: ['RegionSensor', 'SubRegionSensor']
+                            }}
+                        />
+                    </SearchDiv>
+                </HeaderRow>
                 <Teams>
                     <TasksWrapper>
                         <ReactiveList
@@ -86,6 +128,9 @@ class Tasks extends React.Component<Props> {
                             pagination
                             showResultStats={false}
                             size={20}
+                            react={{
+                                and: ['RegionSensor', 'TimezoneSensor', 'SearchSensor', 'SubRegionSensor']
+                            }}
                             render={({ data }) => (
                                 <ReactiveList.ResultCardsWrapper>
                                     {data.map((item: ICountryData) => (
