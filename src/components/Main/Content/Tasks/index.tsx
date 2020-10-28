@@ -6,7 +6,10 @@ import Task from 'components/Common/Task'
 import { ITaskState } from 'store/tasks/types'
 import { getTasks } from 'store/tasks/selectors'
 import {fetchTasks} from '../../../../store/tasks/actions';
-import {DataSearch, MultiList, ReactiveList} from '@appbaseio/reactivesearch';
+import {DataSearch, MultiDropdownList, MultiList, ReactiveList, SingleDataList} from '@appbaseio/reactivesearch';
+import {
+    ReactiveGoogleMap
+} from '@appbaseio/reactivemaps';
 import {ICountryData} from '../../../../store/countries/types';
 
 const Wrapper = styled.div`
@@ -29,7 +32,7 @@ const RegionList = styled(MultiList)`
 `;
 const SearchDiv = styled.div `
   display: flex;
-  margin-left: 4vh;
+  margin-left: 8vh;
 `;
 const HeaderRow = styled.div`
   display: flex;
@@ -69,6 +72,23 @@ class Tasks extends React.Component<Props> {
     }
 
     public render = () => {
+        const mapProps = {
+            dataField: 'location',
+            defaultMapStyle: 'Light Monochrome',
+            title: 'Reactive Maps',
+            defaultZoom: 13,
+            react: {
+                and: 'SearchSensor'
+            },
+            onPopoverClick: (item: any)  => <div>{item.name}</div>,
+            showMapStyles: true,
+            renderData: (result: any) => {
+                console.log(result);
+                return {
+                    label: <div>{result.magnitude}</div>
+                };
+            }
+        };
         return (
             <Wrapper>
                 <HeaderColumn>
@@ -91,7 +111,7 @@ class Tasks extends React.Component<Props> {
                             dataField='region.keyword'
                             title='Region'
                             react={{
-                                and: ['TimezoneSensor', 'SubRegionSensor']
+                                and: ['TimezoneSensor', 'SubRegionSensor', 'CurrencySensor', 'LanguageSensor']
                             }}
                         />
                     </SearchDiv>
@@ -101,9 +121,9 @@ class Tasks extends React.Component<Props> {
                             showCheckbox={true}
                             componentId='SubRegionSensor'
                             dataField='subregion.keyword'
-                            title='Region'
+                            title='Sub-Region'
                             react={{
-                                and: ['TimezoneSensor', 'RegionSensor']
+                                and: ['TimezoneSensor', 'RegionSensor', 'CurrencySensor', 'LanguageSensor']
                             }}
                         />
                     </SearchDiv>
@@ -115,7 +135,31 @@ class Tasks extends React.Component<Props> {
                             dataField='timezones.keyword'
                             title='Timezone'
                             react={{
-                                and: ['RegionSensor', 'SubRegionSensor']
+                                and: ['RegionSensor', 'SubRegionSensor', 'CurrencySensor', 'LanguageSensor']
+                            }}
+                        />
+                    </SearchDiv>
+                    <SearchDiv>
+                        <RegionList
+                            size={300}
+                            componentId='CurrencySensor'
+                            showCheckbox={true}
+                            dataField='currencies.name.keyword'
+                            title='Currency'
+                            react={{
+                                and: ['RegionSensor', 'SubRegionSensor', 'TimezoneSensor', 'LanguageSensor']
+                            }}
+                        />
+                    </SearchDiv>
+                    <SearchDiv>
+                        <RegionList
+                            size={300}
+                            componentId='LanguageSensor'
+                            showCheckbox={true}
+                            dataField='languages.name.keyword'
+                            title='Language'
+                            react={{
+                                and: ['RegionSensor', 'SubRegionSensor', 'TimezoneSensor', 'CurrencySensor']
                             }}
                         />
                     </SearchDiv>
@@ -129,7 +173,7 @@ class Tasks extends React.Component<Props> {
                             showResultStats={false}
                             size={20}
                             react={{
-                                and: ['RegionSensor', 'TimezoneSensor', 'SearchSensor', 'SubRegionSensor']
+                                and: ['RegionSensor', 'TimezoneSensor', 'SearchSensor', 'SubRegionSensor', 'CurrencySensor', 'LanguageSensor']
                             }}
                             render={({ data }) => (
                                 <ReactiveList.ResultCardsWrapper>

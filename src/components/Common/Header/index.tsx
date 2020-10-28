@@ -26,7 +26,7 @@ const logoProps = {
   title: {
     size: 20,
     color: '#44444F',
-    text: 'Square'
+    text: 'Countries Search App'
   },
   image: {
     size: 34,

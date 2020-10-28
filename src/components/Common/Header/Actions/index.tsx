@@ -18,8 +18,6 @@ const Wrapper = styled.div`
 const Actions = () => {
   return (
     <Wrapper>
-      <ActionsSearch />
-      <ActionsShape />
     </Wrapper>
   )
 };
