@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Index from '../../Flag';
-import {ICountryData} from '../../../../store/countries/types';
+import {ICountryData} from '../../../../utils/types';
 
 const TextStyles = styled.div`
   font-size: 14px;
@@ -22,9 +22,6 @@ const Title = styled(TextStyles)`
   color: #171725;
   margin-bottom: 7px;
   text-decoration: 0 && 'line-through';
-`;
-const Team = styled(TextStyles)`
-  color: #696974;
 `;
 
 const FlagWrapper = styled(Index)`

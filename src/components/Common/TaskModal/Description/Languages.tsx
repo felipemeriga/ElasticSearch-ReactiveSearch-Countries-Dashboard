@@ -1,7 +1,7 @@
 import React from 'react'
-import {ILanguage} from '../../../Main/Content/Tasks';
 import LanguageIcon from '../../Icons/Menu/LanguageIcon';
 import {HeaderD, ShapeWrapper, TextD, TitleD, Wrapper} from './DescriptionStructure';
+import {ILanguage} from '../../../../utils/types';
 
 interface ILanguagesProps {
     languages: ILanguage[];

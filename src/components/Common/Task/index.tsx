@@ -2,9 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import Info from 'components/Common/Task/Info'
 import Titles from 'components/Common/Task/Titles'
-import {ICountryData} from '../../Main/Content/Tasks';
 import TaskModal from '../TaskModal';
-
+import {ICountryData} from '../../../utils/types';
 
 const Wrapper = styled.div`
   display: flex;

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import CityIcon from 'components/Common/Icons/Menu/CityIcon';
 import MoneyIcon from '../../Icons/Menu/MoneyIcon';
 import RegionIcon from '../../Icons/Menu/RegionIcon';
-import {ICountryData} from '../../../../store/countries/types';
+import {ICountryData} from '../../../../utils/types';
 
 const TextStyles = styled.div`
   font-size: 14px;

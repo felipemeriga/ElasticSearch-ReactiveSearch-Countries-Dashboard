@@ -1,7 +1,7 @@
 import React from 'react'
 import MoneyIcon from '../../Icons/Menu/MoneyIcon';
-import {ICurrency} from '../../../Main/Content/Tasks';
 import {HeaderD, ShapeWrapper, TextD, TitleD, Wrapper} from './DescriptionStructure';
+import {ICurrency} from '../../../../utils/types';
 
 interface ICurrenciesProps {
     currencies: ICurrency[];

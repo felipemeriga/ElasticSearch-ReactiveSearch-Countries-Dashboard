@@ -1,11 +1,11 @@
 import React from 'react';
-import {ICountryData} from '../../../Main/Content/Tasks';
 import NativeName from './NativeName';
 import Capital from './Capital';
 import Population from './Population';
 import Subregion from './Subregion';
 import Currencies from './Currencies';
 import Languages from './Languages';
+import {ICountryData} from '../../../../utils/types';
 
 interface IDescriptionProps {
     country: ICountryData;

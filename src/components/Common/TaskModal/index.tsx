@@ -2,9 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import styled from 'styled-components'
 import Close from 'components/Common/Icons/Common/Close'
-import {ICountryData} from '../../Main/Content/Tasks';
 import Index from '../Flag';
 import Description from './Description';
+import {ICountryData} from '../../../utils/types';
 
 const variables = {
   colorGray: '#92929d',
