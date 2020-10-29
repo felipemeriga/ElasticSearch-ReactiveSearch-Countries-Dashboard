@@ -1,16 +1,13 @@
 import React from 'react'
-import { AppState } from 'store'
-import { connect } from 'react-redux'
 import styled from 'styled-components'
 import Info from 'components/Common/Task/Info'
 import Titles from 'components/Common/Task/Titles'
-import { getKanbanOption } from 'store/show/selectors'
 import {ICountryData} from '../../../store/countries/types';
 
 const Wrapper = styled.div`
   display: flex;
-  justify-content: ${(props: ITaskProps) => !props.option && 'space-around'};
-  flex-direction: ${(props: ITaskProps) => (props.option ? 'column' : 'row')};
+
+  flex-direction: column;
   cursor: pointer;
   border-radius: 20px;
   padding: 15px;
@@ -21,7 +18,6 @@ const Wrapper = styled.div`
 interface ITaskProps {
   data: ICountryData
   key: string
-  option: boolean
 }
 
 const Task: React.FC<ITaskProps> = props => {
@@ -46,10 +42,5 @@ const Task: React.FC<ITaskProps> = props => {
     </>
   )
 };
-const mapStateToProps = (state: AppState) => {
-  return {
-    option: getKanbanOption(state)
-  }
-};
 
-export default connect(mapStateToProps)(Task)
+export default Task

@@ -1,16 +1,41 @@
 import React from 'react'
-import { AppState } from 'store'
-import { connect } from 'react-redux'
 import styled from 'styled-components'
 import Task from 'components/Common/Task'
-import { ITaskState } from 'store/tasks/types'
-import { getTasks } from 'store/tasks/selectors'
-import {fetchTasks} from '../../../../store/tasks/actions';
-import {DataSearch, MultiDropdownList, MultiList, ReactiveList, SingleDataList} from '@appbaseio/reactivesearch';
-import {
-    ReactiveGoogleMap
-} from '@appbaseio/reactivemaps';
-import {ICountryData} from '../../../../store/countries/types';
+import {DataSearch, MultiList, ReactiveList} from '@appbaseio/reactivesearch';
+
+export interface ICountryData {
+    _id: string;
+    name: string
+    topLevelDomain: string[];
+    alpha2Code: string;
+    alpha3Code: string;
+    callingCodes: string[];
+    capital: string;
+    altSpellings: string[];
+    region: string;
+    subregion: string;
+    population: number;
+    latlng: number[];
+    demonym: string;
+    area: number;
+    gini: number;
+    timezones: string[];
+    borders: string[];
+    nativeName: string;
+    numericCode: number;
+    currencies: ICurrency[];
+    languages: object[];
+    translations: object;
+    flag: string;
+    regionalBlocs: object[];
+    cioc: string;
+}
+
+export interface ICurrency {
+    code: string;
+    name: string;
+    symbol: string;
+}
 
 const Wrapper = styled.div`
   border: 1px solid #e2e2ea;
@@ -53,42 +78,14 @@ const TasksWrapper = styled.div`
   flex-wrap: wrap;
 `;
 
-interface IStateProps {
-  tasks: ITaskState[];
-  fetchTasks: typeof fetchTasks;
+interface IOwnProps {
 }
 
-interface IDispatchProps {
-    fetchTasks: () => any;
-}
-
-type Props = IStateProps & IDispatchProps;
+type Props = IOwnProps;
 
 class Tasks extends React.Component<Props> {
 
-    componentWillMount(): void {
-        const { fetchTasks } = this.props;
-        fetchTasks();
-    }
-
     public render = () => {
-        const mapProps = {
-            dataField: 'location',
-            defaultMapStyle: 'Light Monochrome',
-            title: 'Reactive Maps',
-            defaultZoom: 13,
-            react: {
-                and: 'SearchSensor'
-            },
-            onPopoverClick: (item: any)  => <div>{item.name}</div>,
-            showMapStyles: true,
-            renderData: (result: any) => {
-                console.log(result);
-                return {
-                    label: <div>{result.magnitude}</div>
-                };
-            }
-        };
         return (
             <Wrapper>
                 <HeaderColumn>
@@ -190,16 +187,4 @@ class Tasks extends React.Component<Props> {
     };
 }
 
-const mapStateToProps = (state: AppState): {tasks: ITaskState[]} => {
-  return {
-    tasks: getTasks(state)
-  }
-};
-
-const mapDispatchToProps = (dispatch: any): IDispatchProps => {
-    return {
-        fetchTasks: () => dispatch(fetchTasks())
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Tasks)
+export default Tasks

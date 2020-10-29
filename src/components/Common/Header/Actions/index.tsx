@@ -1,7 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import ActionsShape from 'components/Common/Header/Actions/Shape'
-import ActionsSearch from 'components/Common/Header/Actions/Search'
 
 const Wrapper = styled.div`
   display: grid;
