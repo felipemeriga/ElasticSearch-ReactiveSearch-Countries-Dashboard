@@ -2,7 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import Info from 'components/Common/Task/Info'
 import Titles from 'components/Common/Task/Titles'
-import {ICountryData} from '../../../store/countries/types';
+import {ICountryData} from '../../Main/Content/Tasks';
+import TaskModal from '../TaskModal';
+
 
 const Wrapper = styled.div`
   display: flex;
@@ -38,7 +40,7 @@ const Task: React.FC<ITaskProps> = props => {
         <Titles data={data} />
         <Info data={data} />
       </Wrapper>
-      {/*<>{modal && <TaskModal {...data} onClose={toggleModal} />}</>*/}
+      <>{modal && <TaskModal country={data} onClose={toggleModal} />}</>
     </>
   )
 };

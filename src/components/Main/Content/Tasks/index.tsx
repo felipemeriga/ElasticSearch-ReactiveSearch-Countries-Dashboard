@@ -24,7 +24,7 @@ export interface ICountryData {
     nativeName: string;
     numericCode: number;
     currencies: ICurrency[];
-    languages: object[];
+    languages: ILanguage[];
     translations: object;
     flag: string;
     regionalBlocs: object[];
@@ -35,6 +35,13 @@ export interface ICurrency {
     code: string;
     name: string;
     symbol: string;
+}
+
+export interface ILanguage {
+    iso639_1: string;
+    iso639_2: string;
+    name: string;
+    nativeName: string;
 }
 
 const Wrapper = styled.div`

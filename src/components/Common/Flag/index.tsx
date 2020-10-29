@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 const WithAvatarWrapper = styled.img`
-  width: 32px;
-  height: 32px;
+  width: 64px;
+  height: 64px;
   cursor: not-allowed;
   border-radius: 32px;
    background-repeat: no-repeat;

@@ -2,7 +2,14 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import styled from 'styled-components'
 import Close from 'components/Common/Icons/Common/Close'
-import Description from 'components/Common/TaskModal/Description'
+import {ICountryData} from '../../Main/Content/Tasks';
+import Index from '../Flag';
+import Currencies from './Description/Currencies';
+import Subregion from './Description/Subregion';
+import Capital from './Description/Capital';
+import Languages from './Description/Languages';
+import NativeName from './Description/NativeName';
+import Population from './Description/Population';
 
 const variables = {
   colorGray: '#92929d',
@@ -14,7 +21,7 @@ const Wrapper = styled.section`
   position: absolute;
   top: 0;
   width: 100%;
-  height: 100vh;
+  height: calc(220%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -57,51 +64,40 @@ const Title = styled.div`
   font-size: 24px;
   margin: 30px 0;
 `;
-const Delete = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 30px;
-  background-color: ${variables.colorRed};
-  outline: none;
-  cursor: pointer;
-  color: ${variables.colorWhite};
-  height: 38px;
-  border-radius: 20px;
-  border: 1px solid ${variables.colorRed};
-  :hover {
-    color: ${variables.colorRed};
-    background-color: ${variables.colorWhite};
-  }
+
+const FlagWrapper = styled(Index)`
+  margin-bottom: 5vh;
 `;
 
 interface ITaskModalProps {
-
+  country: ICountryData
+  onClose: () => void
 }
 
 const TaskModal: React.FC<ITaskModalProps> = props => {
-  const { type, title, onClose, id, deleteTask } = props;
+  const { country, onClose} = props;
 
   const element = document.getElementById('modal');
-
-  const removeTask = (id: string) => {
-    deleteTask(id)
-  };
 
   return ReactDOM.createPortal(
     <Wrapper>
       <Modal>
         <Header>
-          <span>{type}</span>
+          <span>{country.region}</span>
           <Button onClick={onClose}>
             <Close />
           </Button>
         </Header>
         <Title>
-          <span>{title}</span>
+          <span>{country.name}</span>
         </Title>
-        <Description title={title} />
-        <Delete onClick={() => removeTask(id)}>Delete</Delete>
+        <FlagWrapper url={country.flag}/>
+        <NativeName nativeName={country.nativeName}/>
+        <Capital capital={country.capital}/>
+        <Population population={country.population}/>
+        <Subregion subRegion={country.subregion}/>
+        <Currencies currencies={country.currencies} />
+        <Languages languages={country.languages} />
       </Modal>
     </Wrapper>,
     element
