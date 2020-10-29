@@ -13,7 +13,7 @@ export interface ICountryData {
     capital: string;
     altSpellings: string[];
     region: string;
-    subregion: string;
+    subRegion: string;
     population: number;
     latlng: number[];
     demonym: string;

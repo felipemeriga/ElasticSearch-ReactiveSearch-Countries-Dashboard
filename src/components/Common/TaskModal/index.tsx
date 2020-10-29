@@ -4,12 +4,7 @@ import styled from 'styled-components'
 import Close from 'components/Common/Icons/Common/Close'
 import {ICountryData} from '../../Main/Content/Tasks';
 import Index from '../Flag';
-import Currencies from './Description/Currencies';
-import Subregion from './Description/Subregion';
-import Capital from './Description/Capital';
-import Languages from './Description/Languages';
-import NativeName from './Description/NativeName';
-import Population from './Description/Population';
+import Description from './Description';
 
 const variables = {
   colorGray: '#92929d',
@@ -92,14 +87,10 @@ const TaskModal: React.FC<ITaskModalProps> = props => {
           <span>{country.name}</span>
         </Title>
         <FlagWrapper url={country.flag}/>
-        <NativeName nativeName={country.nativeName}/>
-        <Capital capital={country.capital}/>
-        <Population population={country.population}/>
-        <Subregion subRegion={country.subregion}/>
-        <Currencies currencies={country.currencies} />
-        <Languages languages={country.languages} />
+        <Description country={country}/>
       </Modal>
     </Wrapper>,
+      // @ts-ignore
     element
   )
 };
