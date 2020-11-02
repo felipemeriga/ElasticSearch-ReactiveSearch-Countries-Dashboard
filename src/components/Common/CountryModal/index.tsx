@@ -64,12 +64,12 @@ const FlagWrapper = styled(Index)`
   margin-bottom: 5vh;
 `;
 
-interface ITaskModalProps {
+interface ICountryModalProps {
   country: ICountryData
   onClose: () => void
 }
 
-const TaskModal: React.FC<ITaskModalProps> = props => {
+const CountryModal: React.FC<ICountryModalProps> = props => {
   const { country, onClose} = props;
 
   const element = document.getElementById('modal');
@@ -95,4 +95,4 @@ const TaskModal: React.FC<ITaskModalProps> = props => {
   )
 };
 
-export default TaskModal
+export default CountryModal

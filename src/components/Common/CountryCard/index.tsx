@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import Info from 'components/Common/Task/Info'
-import Titles from 'components/Common/Task/Titles'
-import TaskModal from '../TaskModal';
+import Info from 'components/Common/CountryCard/Info'
+import Titles from 'components/Common/CountryCard/Titles'
 import {ICountryData} from '../../../utils/types';
+import CountryModal from '../CountryModal';
 
 const Wrapper = styled.div`
   display: flex;
@@ -16,12 +16,12 @@ const Wrapper = styled.div`
   background-color: #e0f1f9;
 `;
 
-interface ITaskProps {
+interface ICountryCardProps {
   data: ICountryData
   key: string
 }
 
-const Task: React.FC<ITaskProps> = props => {
+const CountryCard: React.FC<ICountryCardProps> = props => {
   const { data } = props;
 
   const [modal, setModal] = React.useState<boolean>(false);
@@ -39,9 +39,9 @@ const Task: React.FC<ITaskProps> = props => {
         <Titles data={data} />
         <Info data={data} />
       </Wrapper>
-      <>{modal && <TaskModal country={data} onClose={toggleModal} />}</>
+      <>{modal && <CountryModal country={data} onClose={toggleModal} />}</>
     </>
   )
 };
 
-export default Task
+export default CountryCard
