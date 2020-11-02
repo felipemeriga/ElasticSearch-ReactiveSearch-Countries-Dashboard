@@ -7,7 +7,7 @@ const Section = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`
+`;
 
 interface ILogoProps {
   title: {
@@ -22,7 +22,7 @@ interface ILogoProps {
 }
 
 const Logo = (props: ILogoProps) => {
-  const { image, title } = props
+  const { image, title } = props;
 
   return (
     <Section>
@@ -30,6 +30,6 @@ const Logo = (props: ILogoProps) => {
       <LogoTitle {...title} />
     </Section>
   )
-}
+};
 
 export default Logo

@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import Logo from 'components/Common/Logo'
-import Actions from 'components/Common/Header/Actions'
 
 const Wrapper = styled.section`
   display: flex;
@@ -18,15 +17,12 @@ const LogoWrapper = styled.div`
     text-decoration: none;
   }
 `;
-const ActionsWrapper = styled.div`
-  margin-right: 25px;
-`;
 
 const logoProps = {
   title: {
     size: 20,
     color: '#44444F',
-    text: 'Square'
+    text: 'Countries Search App'
   },
   image: {
     size: 34,
@@ -42,9 +38,6 @@ const Header = () => {
           <Logo {...logoProps} />
         </Link>
       </LogoWrapper>
-      <ActionsWrapper>
-        <Actions />
-      </ActionsWrapper>
     </Wrapper>
   )
 };

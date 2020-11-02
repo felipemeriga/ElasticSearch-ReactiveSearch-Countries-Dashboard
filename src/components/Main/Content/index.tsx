@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import ContentTitle from 'components/Main/Content/Title'
-import ContentTasks from 'components/Main/Content/Tasks'
+import ContentCountries from 'components/Main/Content/Countries'
 
 const Wrapper = styled.section`
   display: flex;
@@ -19,7 +19,7 @@ const Content = () => {
   return (
     <Wrapper>
       <ContentTitle />
-      <ContentTasks />
+      <ContentCountries />
     </Wrapper>
   )
 };

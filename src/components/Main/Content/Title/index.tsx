@@ -27,8 +27,8 @@ const Title = () => {
   return (
     <HeaderContent>
       <div>
-        <Username>Hi James,</Username>
-        <WelcomeText>here’s your currently projects</WelcomeText>
+        <Username>Hello,</Username>
+        <WelcomeText>here’s is all the available countries</WelcomeText>
       </div>
     </HeaderContent>
   )
